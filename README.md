@@ -67,6 +67,10 @@ Run a worker
 php artisan queue:work
 ```
 
-Go to `/job` this will run a small job that will be queued, this job simply logs inside of `storage/logs/laravel.log`.
+## Results
+
+1) Go to `/job` (in the tenant or system fqdn)
+2) This will run a small job that will be queued  
+3) This job logs the generated urls inside of `storage/logs/laravel.log`.
 
 Also you can tap on `/now` which will run the job in this instance without queuing it.
