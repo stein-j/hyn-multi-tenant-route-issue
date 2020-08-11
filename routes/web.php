@@ -13,19 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+// Run inside of a job
+Route::get('/job', 'HomeController@job')->name('job');
+
+// Run in this instance
+Route::get('/now', 'HomeController@now')->name('now');
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
-
-// This route
-Route::get('/hello', 'HomeController@hello')->name('hello');
-
-// This route simply serves as a test route.
-// This should return correctly the full URL of the route.
-Route::get('world',function (){
-    return route('world');
-})->name('world');
-
 
 Auth::routes();
 

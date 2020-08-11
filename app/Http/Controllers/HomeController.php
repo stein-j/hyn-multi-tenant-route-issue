@@ -2,25 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\RouteMail;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+use App\Jobs\GetUrlJob;
 
 class HomeController extends Controller
 {
 
-    public function hello()
+    public function job()
     {
-        if (request()->has('now')){
-            Mail::to('user@support.com')->send(new RouteMail());
-        }
-        else {
-            Mail::to('user@support.com')->queue(new RouteMail());
-        }
-        return route('world');
+        GetUrlJob::dispatch(route('job'));
+        return route('job');
     }
 
-
+    public function now()
+    {
+        GetUrlJob::dispatchNow(route('now'));
+        return route('now');
+    }
 
     /**
      * Create a new controller instance.
